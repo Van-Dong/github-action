@@ -1,14 +1,23 @@
-name: learn-github-actions
-run-name: ${{github.actor}} dang tim hieu Github Actions
-on: [push]
+name: CI Workflow  # Tên workflow
+
+on:                # Sự kiện kích hoạt workflow
+  push:            # Kích hoạt khi có lệnh push vào repository
+    branches:      
+      - master      # Chỉ áp dụng với nhánh "main"
+  pull_request:   # Kích hoạt khi có pull request
+
 jobs:
-  check-bats-version:
-    name: Build
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest # Loại runner để chạy job (Ubuntu, Windows, macOS)
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3  # Lẫy mã nguồn về
+      - name: Setup Node.js 
+        uses: actions/setup-node@v3  # Cài đặt Node.js
         with:
-          node-version: 14
-      - run: npm install -g bats
-      - run: bats -v
+          node-version: '16'
+      - name: Install dependences
+        run: npm install
+      - name: Run tests
+        run: npm run test       # Sử dụng lệnh chạy test
