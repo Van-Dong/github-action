@@ -20,4 +20,4 @@ jobs:
       - name: Install dependences
         run: npm install
       - name: Run tests
-        run: npm run test       # Sử dụng lệnh chạy test
+        run: npm run test       # Sử dụng lệnh chạy test 
