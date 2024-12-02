@@ -38,7 +38,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: dongnguyen4724/learn_cicd:staging  # Cần tạo repository trên Docker Hub trước, nếu không sẽ thấy bại
+          tags: dongnguyen4724/learn_cicd:staging 
 
 
 
